@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+.todo-form{
+    display: flex;
+    flex-direction: column;
+}
+.new-todo-hidden{
+    display: none;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: grey;
+}
