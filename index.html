@@ -8,16 +8,21 @@
 </head>
 <body>
     <div class="container">
-        <h1>To-Do List</h1>
+        <h1 class="title">To-Do List</h1>
         <div class="input-submit">
             <form class="todo-form"> 
                 <label class="new-todo-hidden" for="add-item">New Todo:</label> 
                 <input type="text" id="add-item" name="add-item" placeholder="Add item" autocomplete="off">
-                <!-- Disabled autocomplete to prevent browser suggestions -->
-                <button type="submit">Submit</button>
+                <button class="submit-btn" type="submit">Submit</button>
             </form>
         </div>
         <ul id="todo-list"></ul> 
+        <div id="custom-dialog" class="dialog">
+            <div class="dialog-content">
+                <span id="dialog-message"></span>
+                <button class="submit-btn" id="dialog-ok"><p class="dialog-text">Ok</p></button>
+            </div>
+        </div>
     </div>
     <script src="./js/script.js">
     </script>

@@ -1,16 +1,129 @@
 .container{
-    display: flex;
-    flex-direction: column;
+    margin: 0 auto;
 }
+
+.title{
+    text-align: center;
+}
+
 .todo-form{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 10px;
 }
 .new-todo-hidden{
     display: none;
 }
+input#add-item{
+    grid-column: 3 / span 8;
+    background-color: #efefef;
+    border: 0;
+    padding: 5px 15px;
+    border-radius: 26px;
+}
 
+.submit-btn{
+    grid-column: 5 / span 4;
+    padding: 5px 15px;
+    background-color: #4c03deb9;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+ul{
+    background-color: #efefef;
+    padding:0;
+
+}
+li{
+    list-style-type: none;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 5px
+
+}
+li::after {
+    content: "";
+    border-bottom: 1px solid #4c03deb9;
+    margin: 2% 0 2% 1%;
+    grid-column: span 12;
+}
+
+.task-checkbox{
+    grid-column: span 1;
+}
+
+input[type='checkbox'] {
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #4c03deb9;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+} 
+
+input[type="checkbox"]:after {
+    content: url('/tick.svg'); 
+    color: #ffffff;
+    display: none;
+  }
+
+  input[type="checkbox"]:hover {
+    background-color: #a5a5a5;
+  }
+  input[type="checkbox"]:checked {
+    background-color: #4c03deb9;
+    content: icon;
+  }
+  input[type="checkbox"]:checked:after {
+    display: block;
+  }
+
+
+.task-text{
+    grid-column: 2;
+}
 .completed {
     text-decoration: line-through;
     color: grey;
+}
+
+.remove-btn {
+    border: none;
+    cursor: pointer;
+    transition: transform 0.5s ease; 
+}
+
+.remove-btn:hover {
+    transform: scale(1.4); 
+}
+
+.dialog {
+    display: none;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    width: 245px;
+    transition: opacity 0.5s ease-out; 
+}
+
+.dialog-content {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dialog.show {
+    display: block;
+    opacity: 1; 
+}
+
+.dialog-text{
+    margin: 0px;
 }
