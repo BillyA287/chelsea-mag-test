@@ -1,9 +1,15 @@
+*{
+    font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 .container{
     margin: 0 auto;
 }
 
 .title{
     text-align: center;
+    font-weight: bold;
 }
 
 .todo-form{
@@ -51,6 +57,16 @@ li::after {
     grid-column: span 12;
 }
 
+li.unchecked:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+/* Add transition effect to smooth the hover */
+li.unchecked {
+    transition: background-color 0.3s ease;
+}
+
 .task-checkbox{
     grid-column: span 1;
 }
@@ -66,7 +82,7 @@ input[type='checkbox'] {
 } 
 
 input[type="checkbox"]:after {
-    content: url('/tick.svg'); 
+    content: url(/chelsea-mag-test/tick.svg); 
     color: #ffffff;
     display: none;
   }
@@ -86,9 +102,16 @@ input[type="checkbox"]:after {
 .task-text{
     grid-column: 2;
 }
+.task-text:hover{
+    text-decoration: underline;
+}
 .completed {
     text-decoration: line-through;
     color: grey;
+}
+
+.completed .task-text:hover {
+    text-decoration: none; /* Remove hover effect when task is completed */
 }
 
 .remove-btn {
@@ -98,7 +121,7 @@ input[type="checkbox"]:after {
 }
 
 .remove-btn:hover {
-    transform: scale(1.4); 
+    transform: scale(1.3); 
 }
 
 .dialog {
@@ -160,7 +183,7 @@ li{
 }
 
 div#custom-dialog{
-    grid-column: 4 / span 7;
+    grid-column: 6 / span 1;
 }
 
 }

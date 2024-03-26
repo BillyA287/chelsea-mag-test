@@ -14,7 +14,7 @@ function showDialog(message) {
         dialogBox.style.opacity = "0";
         setTimeout(function() {
             dialogBox.style.display = "none";
-            dialogBox.style.opacity = "1"; 
+            dialogBox.style.opacity = "1"; // Reset opacity for future uses
         }, 500); // Fade out duration (milliseconds)
     }, 5000); // Delay before hiding (milliseconds)
 }
@@ -25,13 +25,13 @@ document.getElementById("dialog-ok").addEventListener("click", function() {
 });
 
 // Event listener for form submission
-document.querySelector(".todo-form").addEventListener("submit", function(e) {
-    e.preventDefault(); 
+document.querySelector(".todo-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
     
     // Get input value
     let input = document.getElementById("add-item");
-    let taskText = input.value.trim(); 
-
+    let taskText = input.value.trim(); // Trim to remove leading/trailing whitespace
+    
     if (taskText !== "") {
         tasks.push({ text: taskText, completed: false }); // Add task to array with completed flag
         input.value = ""; // Clear input field
@@ -46,15 +46,18 @@ document.querySelector(".todo-form").addEventListener("submit", function(e) {
 // Function to display tasks in the unordered list
 function displayTasks() {
     let list = document.getElementById("todo-list");
-
-    // Remove existing list items
-    while (list.firstChild) {
-        list.removeChild(list.firstChild);
-    }
-
+    list.innerHTML = ""; // Clear existing list
+    
     tasks.forEach(function(task, index) {
         let listItem = document.createElement("li");
         
+        // Add or remove completed class based on task completion status
+        if (task.completed) {
+            listItem.classList.add("completed");
+        } else {
+            listItem.classList.remove("completed");
+        }
+
         // Create checkbox
         let checkbox = document.createElement("input");
         checkbox.type = "checkbox";
@@ -69,19 +72,14 @@ function displayTasks() {
         let taskText = document.createElement("span");
         taskText.textContent = task.text;
         taskText.classList.add("task-text"); // Add class to task text
-        
-        // Apply completed class if task is completed
-        if (task.completed) {
-            taskText.classList.add("completed");
-        }
-        
+
         // Create remove button with SVG
         let removeButton = document.createElement("button");
         let removeIcon = document.createElement("img");
-        removeIcon.src = "../delete.svg"; // Replace "../delete.svg" with your actual path
+        removeIcon.src = "./delete.svg"; // 
         removeIcon.alt = "Remove";
         removeButton.appendChild(removeIcon);
-        removeButton.classList.add('remove-btn'); // Add class to remove button
+        removeButton.classList.add('remove-btn'); 
         removeButton.addEventListener("click", function() {
             tasks.splice(index, 1); // Remove task from array
             displayTasks(); // Update displayed list
@@ -93,7 +91,8 @@ function displayTasks() {
         list.appendChild(listItem); // Add list item to list
     });
 }
+
 // Function to update task display (e.g., after checkbox change)
 function updateTaskDisplay() {
-    displayTasks(); // re-display tasks
+    displayTasks(); // Simply re-display tasks
 }
