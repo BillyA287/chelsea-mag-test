@@ -127,3 +127,40 @@ input[type="checkbox"]:after {
 .dialog-text{
     margin: 0px;
 }
+
+@media only screen and (min-width: 500px) {
+.task-container{
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    max-width: 800px;
+}
+
+.title{
+    grid-column: span 12;
+    margin: 10px 0px 10px 0px;
+}
+.input-submit{
+    grid-column: span 12;
+}
+
+ul#todo-list{
+    grid-column: span 12;
+}
+.todo-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+li{
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+div#custom-dialog{
+    grid-column: 4 / span 7;
+}
+
+}
